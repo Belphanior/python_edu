@@ -1,7 +1,9 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from core.models import Student
+
 
 def main(request):
-    return HttpResponse('Hello, world!')
+    students = Student.objects.all()
+    return render(request, 'student_list.html', {'students': students})
